@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+  run-command:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+          sudo apt-add-repository https://cli.github.com/packages
+          sudo apt update
+          sudo apt install gh
+      
+      - name: Run command on repos
+        run: |
+          repos=("owner1/repo1" "owner2/repo2" "owner3/repo3")
+          
+          for repo in "${repos[@]}"; do
+            gh label clone younesStrittmatter/test2 --repo younesStrittmatter/test
+          done
