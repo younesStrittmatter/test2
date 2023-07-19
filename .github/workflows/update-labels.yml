@@ -14,10 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: Install GitHub CLI
-        uses: dev-hanz-ops/install-gh-cli-action@v1
-        with:
-          gh-cli-version: 2.14
+      - name: Install GH CLI
+        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
+
       
       - name: Run command on repos
         run: |
