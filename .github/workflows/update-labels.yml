@@ -19,9 +19,11 @@ jobs:
 
       
       - name: Run command on repos
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          repos=("owner1/repo1" "owner2/repo2" "owner3/repo3")
+          repos=("younesStrittmatter/test")
           
           for repo in "${repos[@]}"; do
-            gh label clone younesStrittmatter/test2 --repo younesStrittmatter/test
+            gh label clone younesStrittmatter/test2 --repo "$repo"
           done
